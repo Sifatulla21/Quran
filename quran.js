@@ -7,9 +7,11 @@ const loadQuran = () => {
 }
 
 const showSurah = (surah) =>{
-    // console.log(surah.data);
+
+    // console.log(surah.data.edition.identifier);
     // Select Surah Name
     surah.data.surahs.forEach(sura => {
+        console.log(sura);
         const selectSurah = document.getElementById('selectSurah');
         const li = document.createElement('li');
         li.innerHTML = `
@@ -21,16 +23,16 @@ const showSurah = (surah) =>{
     // Show Ayahs
     
 }
-const loadSura = suraId =>{
+const loadSura = (suraId) =>{
 
-    const url = `http://api.alquran.cloud/v1/surah/${suraId}/en.asad`;
+    const url = `http://api.alquran.cloud/v1/surah/${suraId}/bn.bengali`;
     fetch(url)
     .then(res => res.json())
     .then(data =>appendSurahName(data.data));
 
 }
 const appendSurahName = surahName => {
-    console.log(surahName);
+    console.log(surahName.edition.identifier);
     const showSurahName = document.getElementById('showSurahName');
     showSurahName.innerText = " ";
     const div = document.createElement('div');
@@ -49,16 +51,4 @@ const appendSurahName = surahName => {
     showSurah.appendChild(div);
     });
 }
-const appendSurahAyah = suraAyah =>{
-    // const showSurah = document.getElementById('showSurah');
-    // showSurah.innerText = " ";
-    // suraAyah.forEach(ayah => {
-    //     const div = document.createElement('div');
-    
-    // div.innerHTML = `
-    //     <p id="showSurahBg"><span id="surahNumber">${ayah.number}</span> <span id="surahAyah">${ayah.text}</span></p>
-    // `
-    // showSurah.appendChild(div);
-    // });
-} 
 loadQuran();
