@@ -11,7 +11,6 @@ const showSurah = (surah) =>{
     // console.log(surah.data.edition.identifier);
     // Select Surah Name
     surah.data.surahs.forEach(sura => {
-        console.log(sura);
         const selectSurah = document.getElementById('selectSurah');
         const li = document.createElement('li');
         li.innerHTML = `
@@ -24,15 +23,34 @@ const showSurah = (surah) =>{
     
 }
 const loadSura = (suraId) =>{
+    document.getElementById('languageBan').addEventListener('click',function(){
+        const banLanguageValue = document.getElementById('languageBan').innerText;
+        if(banLanguageValue == 'Bangla'){
+            let url = `http://api.alquran.cloud/v1/surah/${suraId}/bn.bengali`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data =>appendSurahName(data.data));
+        }});
+    document.getElementById('languageEng').addEventListener('click',function(){
+        const engLanguageValue = document.getElementById('languageEng').innerText;
+        if(engLanguageValue == 'English'){
+            let url = `http://api.alquran.cloud/v1/surah/${suraId}/en.asad`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data =>appendSurahName(data.data));
+        }});
+    document.getElementById('languageAra').addEventListener('click',function(){
+        const araLanguageValue = document.getElementById('languageAra').innerText;
+        if(araLanguageValue == 'Arabic'){
+            let url = `http://api.alquran.cloud/v1/surah/${suraId}/ar.asad`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data =>appendSurahName(data.data));
+        }
 
-    const url = `http://api.alquran.cloud/v1/surah/${suraId}/bn.bengali`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data =>appendSurahName(data.data));
-
+    });
 }
 const appendSurahName = surahName => {
-    console.log(surahName.edition.identifier);
     const showSurahName = document.getElementById('showSurahName');
     showSurahName.innerText = " ";
     const div = document.createElement('div');

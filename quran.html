@@ -22,12 +22,15 @@
             </ul>
           </div>
           <!-- Select Language -->
-          <div>
-            <select id="language" class="form-multiselect block w-max mt-1 rounded-md shadow-sm text-center text-sm ">
-            <option value="arabic">Arabic</option>
-            <option value="english">English</option>
-            <option value="bengali">Bengali</option>
-            </select>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Language
+            </button>
+            <ul class="dropdown-menu">
+              <li><button class="dropdown-item" id="languageBan">Bangla</button></li>
+              <li><button class="dropdown-item" id="languageEng">English</button></li>
+              <li><button class="dropdown-item" id="languageAra">Arabic</button></li>
+            </ul>
           </div>
     </section>
     <section class="showSurah container" id="showSurahName">
