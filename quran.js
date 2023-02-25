@@ -1,6 +1,6 @@
 
 const loadQuran = () => {
-    fetch('http://api.alquran.cloud/v1/quran/en.asad')
+    fetch('https://api.alquran.cloud/v1/quran/en.asad')
     .then(res => res.json())
     .then(data => showSurah(data));
 
@@ -26,7 +26,7 @@ const loadSura = (suraId) =>{
     document.getElementById('languageBan').addEventListener('click',function(){
         const banLanguageValue = document.getElementById('languageBan').innerText;
         if(banLanguageValue == 'Bangla'){
-            let url = `http://api.alquran.cloud/v1/surah/${suraId}/bn.bengali`;
+            let url = `https://api.alquran.cloud/v1/surah/${suraId}/bn.bengali`;
             fetch(url)
             .then(res => res.json())
             .then(data =>appendSurahName(data.data));
@@ -34,7 +34,7 @@ const loadSura = (suraId) =>{
     document.getElementById('languageEng').addEventListener('click',function(){
         const engLanguageValue = document.getElementById('languageEng').innerText;
         if(engLanguageValue == 'English'){
-            let url = `http://api.alquran.cloud/v1/surah/${suraId}/en.asad`;
+            let url = `https://api.alquran.cloud/v1/surah/${suraId}/en.asad`;
             fetch(url)
             .then(res => res.json())
             .then(data =>appendSurahName(data.data));
@@ -42,7 +42,7 @@ const loadSura = (suraId) =>{
     document.getElementById('languageAra').addEventListener('click',function(){
         const araLanguageValue = document.getElementById('languageAra').innerText;
         if(araLanguageValue == 'Arabic'){
-            let url = `http://api.alquran.cloud/v1/surah/${suraId}/ar.asad`;
+            let url = `https://api.alquran.cloud/v1/surah/${suraId}/ar.asad`;
             fetch(url)
             .then(res => res.json())
             .then(data =>appendSurahName(data.data));
