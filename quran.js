@@ -1,6 +1,6 @@
 
 const loadQuran = () => {
-    fetch('http://api.alquran.cloud/v1/quran/bn.bengali')
+    fetch('http://api.alquran.cloud/v1/quran/en.asad')
     .then(res => res.json())
     .then(data => showSurah(data));
 
