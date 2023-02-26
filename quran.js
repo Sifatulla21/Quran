@@ -7,14 +7,14 @@ const loadQuran = () => {
 }
 
 const showSurah = (surah) =>{
-
+    // console.log(surah);
     // console.log(surah.data.edition.identifier);
     // Select Surah Name
     surah.data.surahs.forEach(sura => {
         const selectSurah = document.getElementById('selectSurah');
         const li = document.createElement('li');
         li.innerHTML = `
-        <button  class="dropdown-item" onclick="loadSura(${sura.number})"><span>${sura.number}</span><span>${sura.englishName}</span></button>
+        <button  class="dropdown-item" onclick="loadSura(${sura.number})"><span>${sura.number}</span><span>${sura.englishName}</span><span>(${sura.englishNameTranslation})</span></button>
         `;
         selectSurah.appendChild(li);
     });
@@ -51,16 +51,24 @@ const loadSura = (suraId) =>{
     });
 }
 const appendSurahName = surahName => {
+    
     const showSurahName = document.getElementById('showSurahName');
     showSurahName.innerText = " ";
     const div = document.createElement('div');
     div.innerHTML = `
-        <h1>${surahName.englishName}</h1>
+        <h1>${surahName.englishName}<span class="colors">(${surahName.englishNameTranslation})</span></h1>
+        <p>Revelation Type: <span class="colors">${surahName.revelationType}</span></p>
+        <p>Number Of Ayahs: <span class="colors">${surahName.numberOfAyahs}</span></p>
+        <p>Number Of Ruku: <span class="colors">${surahName.ayahs[0].ruku}</span></p>
+       
     `
     showSurahName.appendChild(div);
+    
     const showSurah = document.getElementById('showSurah');
     showSurah.innerText = " ";
+    console.log(surahName);
     surahName.ayahs.forEach(ayah => {
+        
         const div = document.createElement('div');
     
     div.innerHTML = `
